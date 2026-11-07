@@ -1,1 +1,11 @@
-﻿Console.WriteLine("Hello, World!");
+﻿namespace sace;
+
+static class Program
+{
+    [STAThread]
+    static void Main()
+    {
+        ApplicationConfiguration.Initialize();
+        Application.Run(new LoginForm());
+    }
+}
