@@ -9,6 +9,8 @@ public partial class RegisterForm : Form
         InitializeComponent();
     }
 
+    public string KorisnickoIme => txtKorisnickoIme.Text.Trim();
+
     private void btnRegistruj_Click(object sender, EventArgs e)
     {
         string korisnickoIme = txtKorisnickoIme.Text.Trim();
@@ -69,7 +71,7 @@ public partial class RegisterForm : Form
             unos.ExecuteNonQuery();
 
             MessageBox.Show("Registracija je uspješna. Sada se možete prijaviti.");
-            Close();
+            DialogResult = DialogResult.OK;
         }
         catch (MySqlException)
         {

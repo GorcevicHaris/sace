@@ -34,6 +34,8 @@ public partial class LoginForm : Form
             if (!red.Read() || !BCrypt.Net.BCrypt.Verify(lozinka, red.GetString("lozinka")))
             {
                 MessageBox.Show("Pogrešno korisničko ime ili lozinka.");
+                txtLozinka.Clear();
+                txtLozinka.Focus();
                 return;
             }
 
@@ -55,6 +57,12 @@ public partial class LoginForm : Form
     private void btnRegistracija_Click(object sender, EventArgs e)
     {
         RegisterForm forma = new RegisterForm();
-        forma.ShowDialog();
+
+        if (forma.ShowDialog() == DialogResult.OK)
+        {
+            txtKorisnickoIme.Text = forma.KorisnickoIme;
+            txtLozinka.Clear();
+            txtLozinka.Focus();
+        }
     }
 }
